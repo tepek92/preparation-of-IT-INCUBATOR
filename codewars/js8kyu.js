@@ -160,3 +160,100 @@ function evenNumbers(array, number) {
     }
     return result.reverse();
   }
+
+  // Count Odd Numbers below n
+  let oddCount = n => Math.floor(n / 2);
+
+  // Эти алгоритмы не проходили тест по времени
+  function oddCount(n) {
+    let count = 0;
+    for (let i = 0; i < n; i++) {
+      if (i % 2 != 0) count++;
+    }
+    return count;
+  }
+  
+  let oddCount = n => { 
+    let count = 0;
+    for (let i = 0; i < n; i++) {
+      if (i % 2 != 0) count++;
+    }
+    return count;
+  };
+
+  // Enumerable Magic #20 - Cascading Subsets
+ /*
+Create a method each_cons that accepts a list and a number n,
+and returns cascading subsets of the list of size n, like so:
+each_cons([1,2,3,4], 2)
+  #=> [[1,2], [2,3], [3,4]]
+each_cons([1,2,3,4], 3)
+  #=> [[1,2,3],[2,3,4]]
+ */
+  function eachCons(array, n) {
+    let arrResult = [];
+    let arrTemp = [];
+    for (let i = 0; i <  array.length; i++) {
+      for (let j = 0; j < n; j++) {
+        if (array[i + j] != null) {
+          arrTemp.push(array[i + j]);
+        }
+      }
+      if(arrTemp.length == n) {
+        arrResult.push(arrTemp);
+      }
+      arrTemp = [];
+    }
+    return arrResult;
+  }
+
+  // Версия с .slise and .filter
+  function eachCons(array, n) {
+    let resultArr = [];
+    for (let i = 0; i < array.length; i++) {
+      resultArr.push(array.slice(i, i + n));
+      
+    }
+    return resultArr.filter((resultArr) => resultArr.length == n);
+  }
+
+  //Opposites Attract
+  /*
+Timmy & Sarah think they are in love, 
+but around where they live,
+they will only know once they pick a flower each.
+If one of the flowers has an even number of petals
+and the other has an odd number of petals it means they are in love.
+Write a function that will take the number
+of petals of each flower and return true
+if they are in love and false if they aren't.
+  */
+
+let lovefunc = (flower1, flower2) => {
+  return ((flower1 % 2 == 0 && flower2 % 2 != 0)
+     || (flower1 % 2 != 0 && flower2 % 2 == 0));
+};
+
+let lovefunc = (flower1, flower2) => !!((flower1 + flower2) % 2); 
+//равно
+let lovefunc = (flower1, flower2) => Boolean(((flower1 + flower2) % 2));
+// т.е. !!(двойное отрицание) равно преобразованиею в Boolean(value)
+
+let lovefunc = (flower1, flower2) => ((flower1 + flower2) % 2 != 0);
+
+
+//Will you make it?
+// длинное "сложное" услови, по факту
+// просто нужно просчитать хватит ли бензина на дистанцию при заданном расходе
+const zeroFuel = (distanceToPump, mpg, fuelLeft) => distanceToPump <= mpg * fuelLeft;
+
+//Exclusive "or" (xor) Logical Operator
+// реализовать "исключающее или"
+// false xor false == false // since both are false
+// true xor false == true // exactly one of the two expressions are true
+// false xor true == true // exactly one of the two expressions are true
+// true xor true == false // Both are true.  "xor" only returns true if EXACTLY one of the two expressions evaluate to true.
+
+let xor = (a, b) => !!(+a != +b);
+let xor = (a, b) => a != b;
+
