@@ -143,3 +143,55 @@ let spongeMeme = sentence =>
                 word.toLowerCase() : word.toUpperCase(), "");
 
 
+// GA-DE-RY-PO-LU-KI cypher
+// The GADERYPOLUKI is a simple substitution cypher
+// used in scouting to encrypt messages.
+// The encryption is based on short, easy to remember key. 
+// The key is written as paired letters, which are in the cipher simple replacement.
+
+// The most frequently used key is "GA-DE-RY-PO-LU-KI".
+//  G => A
+//  g => a
+//  a => g
+//  A => G
+//  D => E
+//   etc.
+
+function encode(str) {
+  //GA-DE-RY-PO-LU-KI
+  let result = "";
+  for (let i = 0; i < str.length; i++) {
+    switch (str[i]) {
+      case 'A': result += "G"; break;
+      case 'a': result += "g"; break;
+      case 'E': result += "D"; break;
+      case 'e': result += "d"; break;
+      case 'Y': result += "R"; break;
+      case 'y': result += "r"; break;
+      case 'O': result += "P"; break;
+      case 'o': result += "p"; break;
+      case 'U': result += "L"; break;
+      case 'u': result += "l"; break;
+      case 'I': result += "K"; break;
+      case 'i': result += "k"; break;
+      case 'G': result += "A"; break;
+      case 'g': result += "a"; break;
+      case 'D': result += "E"; break;
+      case 'd': result += "e"; break;
+      case 'R': result += "Y"; break;
+      case 'r': result += "y"; break;
+      case 'P': result += "O"; break;
+      case 'p': result += "o"; break;
+      case 'L': result += "U"; break;
+      case 'l': result += "u"; break;
+      case 'K': result += "I"; break;
+      case 'k': result += "i"; break;
+      default: result += str[i]; break;
+    }
+  }
+    console.log(result);
+    return result;   
+}
+
+let decode = str => encode(str);  
+
