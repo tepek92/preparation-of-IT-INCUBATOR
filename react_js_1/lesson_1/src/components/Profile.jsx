@@ -1,14 +1,15 @@
 import presswall from "../img/presswall.jpg"
 import avatar from "../img/avatar.jpg"
+import s from "./Profile.module.css"
 
 const Profile = () => {
   return (
-    <div className="content">
+    <div className={s.content}>
       <div>
-        <img className="presswall" src={presswall} alt="presswall"/>
+        <img className={s.presswall} src={presswall} alt="presswall"/>
       </div>
       <div>
-        <img className="avatar" src={avatar} alt="avatar"/> +
+        <img className={s.avatar} src={avatar} alt="avatar"/> +
         description
       </div>
       <div>

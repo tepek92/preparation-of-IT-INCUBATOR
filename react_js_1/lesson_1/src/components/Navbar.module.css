@@ -1,0 +1,13 @@
+.nav {
+  grid-area: n;
+  background-color: rgb(225, 164, 84);
+  font-weight: bold;
+}
+
+.item {
+  margin: 10px;
+  color: white;
+}
+.settings {
+  margin-top: 60px;
+}
