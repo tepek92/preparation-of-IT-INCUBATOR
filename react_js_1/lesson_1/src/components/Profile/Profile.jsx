@@ -1,6 +1,7 @@
-import presswall from "../img/presswall.jpg"
-import avatar from "../img/avatar.jpg"
+import presswall from "../../img/presswall.jpg"
+import avatar from "../../img/avatar.jpg"
 import s from "./Profile.module.css"
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
   return (
@@ -12,14 +13,7 @@ const Profile = () => {
         <img className={s.avatar} src={avatar} alt="avatar"/> +
         description
       </div>
-      <div>
-        My posts
-        <div>New post</div>
-        <div>
-          <div>Post1</div>
-          <div>Post2</div>
-        </div>
-      </div>
+      <MyPosts />
     </div>
   );
 };
