@@ -195,3 +195,82 @@ function encode(str) {
 
 let decode = str => encode(str);  
 
+
+//Basics 04: Rotate Matrix
+// Your task is to rotate a matrix 90 degree to the left. 
+// The matrix is an array of integers with dimension n,m. 
+// So this kata checks some basics, it's not too difficult.
+
+// One easy example:
+
+// Input: {{-1, 4, 5},
+//         { 2, 3, 4}}
+
+// Output: {{ 5, 4},
+//          { 4, 3},
+//          {-1, 2}}
+
+const rotateMatrix = arr => {
+  let  newArr = [];
+  for (let i = 0; i < arr[0].length; i++) {
+    newArr[i] = [];
+    for (let j = 0; j < arr.length; j++) {
+      newArr[i].push(arr[j][arr[0].length - 1 - i]);
+    }
+  }
+  return newArr;
+}
+
+
+
+// The highest profit wins!
+// Task
+// Write a function that returns both the minimum and maximum number of the given list/array.
+
+// Examples(Input --> Output)
+// [1,2,3,4,5] --> [1,5]
+// [2334454,5] --> [5, 2334454]
+// [1]         --> [1, 1]
+const minMax = arr => [Math.min(...arr), Math.max(...arr)];
+
+
+
+// Simple Moon Rating
+// When you look at movie ratings,
+// you usually see it as decimal numbers representing
+// average of all viewers' votes. While it is very informative, it's not
+// very visually appealing. That's what stars, or in our case- moons, are created for.
+
+// Your task is to transform decimal number rating,
+// which is in range 0-10, into 5-moons scale.
+// Your final rating should be rounded to "0.5" (nearest half moon). Input is always valid.
+
+function moonRating(rating) {
+  let result = '';
+  
+   if (rating - Math.floor(rating) == 0.6) {
+     rating = Math.floor(rating) + 0.5;
+   } else if (rating - Math.floor(rating) == 0.5) {
+     rating += 0.5;
+   } else if (rating - Math.floor(rating) < 0.5) {
+     rating = Math.floor(rating);
+   } else {
+     rating = Math.ceil(rating);
+   }
+  
+    let o = Math.floor(rating / 2);
+    let c = Math.ceil(rating / 2 - o);
+    let x = 5 - (o + Math.ceil(c));
+    console.log(`o = ${o} c = ${c} x = ${x}`);
+
+    for (let i = 0; i < o; i++) {
+      result += 'o';
+    }
+    for (let i = 0; i < c; i++) {
+        result += 'c';
+      }
+    for (let i = 0; i < x; i++) {
+        result += 'x';
+      }
+    return result;
+}
