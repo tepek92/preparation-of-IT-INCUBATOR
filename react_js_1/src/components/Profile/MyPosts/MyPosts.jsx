@@ -10,9 +10,9 @@ const MyPosts = () => {
       <br />
       <button>Добавить</button>
       <div>
-        <Post />
-        <Post />
-        <Post />
+        <Post message="Всем хорошего дня!" likeCount="23"/>
+        <Post message="С днем города!" likeCount="13"/>
+        <Post message="Не всех можно потерять, но всех можно забыть :(" likeCount="4"/>
       </div>
     </div>
   );
