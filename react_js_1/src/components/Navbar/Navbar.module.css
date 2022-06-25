@@ -3,20 +3,3 @@
   background-color: rgb(225, 164, 84);
   font-weight: bold;
 }
-
-.item {
-  margin: 15px;
-}
-
-.item a {
-  color: white;
-  text-decoration: none;
-}
-
-.item a.active {
-  color: black;
-}
-
-.settings {
-  margin-top: 60px;
-}

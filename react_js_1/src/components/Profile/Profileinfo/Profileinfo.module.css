@@ -1,0 +1,12 @@
+.presswall {
+  border-radius: 20px;
+  padding: 15px;
+  /* width: ;
+    height:; */
+}
+
+.avatar {
+  width: 100px;
+  border-radius: 100px;
+  margin-left: 15px;
+}
