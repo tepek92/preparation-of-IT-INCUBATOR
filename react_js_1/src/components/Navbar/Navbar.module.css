@@ -5,9 +5,18 @@
 }
 
 .item {
-  margin: 10px;
-  color: white;
+  margin: 15px;
 }
+
+.item a {
+  color: white;
+  text-decoration: none;
+}
+
+.item a.active {
+  color: black;
+}
+
 .settings {
   margin-top: 60px;
 }
