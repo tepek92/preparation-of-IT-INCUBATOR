@@ -4,7 +4,7 @@ import s from "./Dialog.module.css";
 const Dialog = (props) => {
   return (
       <div className={s.dialog}>
-        <NavLink to={"/dialogs/" + props.id}>{props.name}</NavLink>
+        <NavLink to={"/dialogs/" + props.id} className={(a) => a.isActive ? s.active : ""}>{props.name}</NavLink>
       </div>
   );
 };

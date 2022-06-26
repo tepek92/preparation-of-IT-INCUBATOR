@@ -11,6 +11,8 @@ let postDate = [
   },
 ];
 
+let postElement = postDate.map(p => <Post message={p.message} likeCount={p.likeCount} />)
+
 const MyPosts = () => {
   return (
     <div className={s.myPosts}>
@@ -20,9 +22,7 @@ const MyPosts = () => {
       <br />
       <button>Добавить</button>
       <div>
-        <Post message={postDate[0].message} likeCount={postDate[0].likeCount} />
-        <Post message={postDate[1].message} likeCount={postDate[1].likeCount} />
-        <Post message={postDate[2].message} likeCount={postDate[2].likeCount} />
+        { postElement }
       </div>
     </div>
   );
