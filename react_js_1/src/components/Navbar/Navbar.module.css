@@ -3,3 +3,22 @@
   background-color: rgb(225, 164, 84);
   font-weight: bold;
 }
+
+.nav .item {
+  
+}
+
+.nav .setting {
+  padding-top: 20px;
+}
+
+.nav .friends {
+  padding-top: 20px;
+}
+
+.nav .friends img{
+  width: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+
+}

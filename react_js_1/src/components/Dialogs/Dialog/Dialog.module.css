@@ -1,3 +1,7 @@
+.dialog {
+  margin: 10px;
+}
+
 .dialog a {
     color: black;
     text-decoration: none;

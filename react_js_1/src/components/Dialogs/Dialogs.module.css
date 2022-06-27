@@ -1,5 +1,10 @@
 .dialogs {
   display: grid;
   grid-template-columns: 4fr 10fr;
-  padding: 10px;
+  padding-left: 10px;
+}
+
+.dialogs .itemsMessages {
+  padding-left: 10px;
+  background-color: rgb(188, 193, 197);
 }
