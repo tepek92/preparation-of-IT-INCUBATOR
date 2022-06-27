@@ -1,0 +1,8 @@
+.message {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+}
+
+.message .second {
+  margin-top: 35px;
+}

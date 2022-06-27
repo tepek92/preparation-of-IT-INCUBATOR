@@ -1,0 +1,11 @@
+.user {
+  width: 200px;
+  height: 50px;
+  background-color: cadetblue;
+  border-radius: 20px;
+}
+
+.user .text {
+  padding-left: 25px;
+  margin-top: 15px;
+}

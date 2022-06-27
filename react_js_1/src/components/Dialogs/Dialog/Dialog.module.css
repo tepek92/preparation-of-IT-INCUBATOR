@@ -4,5 +4,12 @@
   }
   
   a.active {
-    background-color: darkgrey;
+    font-weight: bold;
+    /* color: gold; */
+    /* background-color: darkgrey; */
+  }
+
+  .dialog img {
+    width: 50px;
+    border-radius: 50px;
   }
