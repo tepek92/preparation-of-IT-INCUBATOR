@@ -274,3 +274,14 @@ function moonRating(rating) {
       }
     return result;
 }
+
+// Baby shark lyrics generator
+// cod < 300 symbols
+
+function babySharkLyrics(){
+  let n = ["Baby shark", "Mommy shark",
+              "Daddy shark", "Grandma shark",
+              "Grandpa shark", "Let's go hunt"]
+ return n.map(n => `${n},${' doo'.repeat(6)+'\n'}`.repeat(3) + `${n}!\n`).join('') + 'Run away,…'
+}
+
