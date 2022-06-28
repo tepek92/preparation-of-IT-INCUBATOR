@@ -6,8 +6,7 @@ const MyPosts = (props) => {
   let postElement = props.postDate.map(p => <Post message={p.message} likeCount={p.likeCount} />);
 
   let textElement = React.createRef();
-  const clickButton = () => alert(textElement.current.value);
-
+  const clickButton = () => props.addNewPost(textElement.current.value);
 
   return (
     <div className={s.myPosts}>

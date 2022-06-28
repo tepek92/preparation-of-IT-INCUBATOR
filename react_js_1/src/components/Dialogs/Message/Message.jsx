@@ -12,6 +12,7 @@ const Message = (props) => {
   ));
 
   let textElement = React.createRef();
+  // let textElement = useRef();
   const clickButtom = () => alert(textElement.current.value);
 
   return (
