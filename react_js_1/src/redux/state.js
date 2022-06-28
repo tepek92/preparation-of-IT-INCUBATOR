@@ -12,6 +12,7 @@ let state = {
       },
       { id: "4", message: "Abgegfgfe", likeCount: "0" },
     ],
+    newPostText: "",
   },
   dialogsPage: {
     dialogsData: [
@@ -52,6 +53,7 @@ let state = {
         { id: "2", message: "How are you?" },
         { id: "3", message: "Fine!" },
       ],
+      newFirstUserMessage: "",
       secondUser: [
         { id: "1", message: "Hi" },
         { id: "2", message: "Fine! And you?" },
@@ -61,11 +63,68 @@ let state = {
   },
 };
 
-export const addNewPost = (newMessage) => {
-  let newId = +state.profilePage.postDate[state.profilePage.postDate.length - 1].id + 1;
-  state.profilePage.postDate.push({id: newId + "",message: newMessage,likeCount: "0"});
+export const addNewPost = () => {
+  let newId =
+    +state.profilePage.postDate[state.profilePage.postDate.length - 1].id + 1;
+  state.profilePage.postDate.push({
+    id: newId + "",
+    message: state.profilePage.newPostText,
+    likeCount: "0",
+  });
+  state.profilePage.newPostText = "";
 
-  reRenderTree(state, addNewPost);
+  reRenderTree(
+    state,
+    addNewPost,
+    updateNewPost,
+    addNewMessageFirst,
+    updateNewMessageFirst
+  );
+};
+
+export const updateNewPost = (newText) => {
+  state.profilePage.newPostText = newText;
+
+  reRenderTree(
+    state,
+    addNewPost,
+    updateNewPost,
+    addNewMessageFirst,
+    updateNewMessageFirst
+  );
+};
+
+export const addNewMessageFirst = () => {
+  let newId =
+    +state.dialogsPage.messagesData.firstUser[
+      state.dialogsPage.messagesData.firstUser.length - 1
+    ].id + 1;
+  state.dialogsPage.messagesData.firstUser.push({
+    id: newId,
+    message: state.dialogsPage.messagesData.newFirstUserMessage,
+  });
+
+  state.dialogsPage.messagesData.newFirstUserMessage = "";
+
+  reRenderTree(
+    state,
+    addNewPost,
+    updateNewPost,
+    addNewMessageFirst,
+    updateNewMessageFirst
+  );
+};
+
+export const updateNewMessageFirst = (newMessage) => {
+  state.dialogsPage.messagesData.newFirstUserMessage = newMessage;
+
+  reRenderTree(
+    state,
+    addNewPost,
+    updateNewPost,
+    addNewMessageFirst,
+    updateNewMessageFirst
+  );
 };
 
 export default state;

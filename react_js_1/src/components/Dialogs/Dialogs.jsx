@@ -5,9 +5,6 @@ import Message from "./Message/Message";
 //props == diakogsPage
 
 const Dialogs = (props) => {
-  
-  
-
   let dialogElement = props.dialogsPage.dialogsData.map((dialog) => (
     <Dialog id={dialog.id} name={dialog.name} avatar={dialog.avatar} />
   ));
@@ -18,7 +15,11 @@ const Dialogs = (props) => {
     <div className={s.dialogs}>
       <div className={s.itemsDialog}>{dialogElement}</div>
       <div className={s.itemsMessages}>
-        <Message messagesData={props.dialogsPage.messagesData} />
+        <Message
+          dialogsPage={props.dialogsPage}
+          addNewMessageFirst={props.addNewMessageFirst}
+          updateNewMessageFirst={props.updateNewMessageFirst}
+        />
       </div>
 
       {/* <div className={s.itemsMessages}>{messageElement}</div> */}

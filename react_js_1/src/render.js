@@ -4,11 +4,24 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const reRenderTree = (state, addNewPost) => {
-  const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const reRenderTree = (
+  state,
+  addNewPost,
+  updateNewPost,
+  addNewMessageFirst,
+  updateNewMessageFirst
+) => {
   root.render(
     <React.StrictMode>
-      <App state={state} addNewPost={addNewPost} />
+      <App
+        state={state}
+        addNewPost={addNewPost}
+        updateNewPost={updateNewPost}
+        addNewMessageFirst={addNewMessageFirst}
+        updateNewMessageFirst={updateNewMessageFirst}
+      />
     </React.StrictMode>
   );
 };
