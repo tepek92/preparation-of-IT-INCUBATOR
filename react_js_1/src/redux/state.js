@@ -1,5 +1,3 @@
-import reRenderTree from "../render";
-
 let state = {
   profilePage: {
     postDate: [
@@ -61,6 +59,12 @@ let state = {
       ],
     },
   },
+};
+
+let reRenderTree = () => {};
+
+export const subscriber = (observer) => {
+  reRenderTree = observer;
 };
 
 export const addNewPost = () => {
@@ -126,5 +130,6 @@ export const updateNewMessageFirst = (newMessage) => {
     updateNewMessageFirst
   );
 };
+
 
 export default state;
