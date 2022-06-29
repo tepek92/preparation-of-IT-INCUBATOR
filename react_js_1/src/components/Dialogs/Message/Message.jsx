@@ -12,10 +12,14 @@ const Message = (props) => {
   ));
 
   let textElement = React.createRef();
-  // let textElement = useRef();
-  const clickButtom = () => props.addNewMessageFirst();
+  const clickButtom = () =>
+    props.dispatch({ type: "ADD-NEW-MESSAGE-FIRST-USER" });
+    
   const newMessage = () =>
-    props.updateNewMessageFirst(textElement.current.value);
+    props.dispatch({
+      type: "UPDATE-NEW-MESSAGE-TEXT-FIRST-USER",
+      newMessage: textElement.current.value,
+    });
 
   return (
     <div className={s.message}>

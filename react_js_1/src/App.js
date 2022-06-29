@@ -23,8 +23,7 @@ const App = (props) => {
               element={
                 <Profile
                   profilePage={props.store.getState().profilePage}
-                  addNewPost={props.store.addNewPost.bind(props.store)}
-                  updateNewPost={props.store.updateNewPost.bind(props.store)}
+                  dispatch={props.store.dispatch.bind(props.store)}
                 />
               }
             />
@@ -33,8 +32,7 @@ const App = (props) => {
               element={
                 <Dialogs
                   dialogsPage={props.store.getState().dialogsPage}
-                  addNewMessageFirst={props.store.addNewMessageFirst.bind(props.store)}
-                  updateNewMessageFirst={props.store.updateNewMessageFirst.bind(props.store)}
+                  dispatch={props.store.dispatch.bind(props.store)}
                 />
               }
             />

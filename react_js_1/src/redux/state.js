@@ -62,53 +62,82 @@ let store = {
     },
   },
 
-  getState() {
-    return this._state;
-  },
-
   _reRenderTrees() {},
 
   subscriber(observer) {
     this._reRenderTree = observer;
   },
-  
-  addNewPost() {
-    let newId =
-      +this._state.profilePage.postDate[this._state.profilePage.postDate.length - 1].id + 1;
-    this._state.profilePage.postDate.push({
-      id: newId + "",
-      message: this._state.profilePage.newPostText,
-      likeCount: "0",
-    });
-    this._state.profilePage.newPostText = "";
-    this._reRenderTree(store);
+
+  getState() {
+    return this._state;
   },
-  
-  updateNewPost (newText) {
-    console.log("i tyt");
-    this._state.profilePage.newPostText = newText;
-    this._reRenderTree(store);
-  },
-  
-  addNewMessageFirst () {
-    let newId =
-      +this._state.dialogsPage.messagesData.firstUser[
-        this._state.dialogsPage.messagesData.firstUser.length - 1
-      ].id + 1;
+
+  // addNewPost() {
+  //   let newId =
+  //     +this._state.profilePage.postDate[this._state.profilePage.postDate.length - 1].id + 1;
+  //   this._state.profilePage.postDate.push({
+  //     id: newId + "",
+  //     message: this._state.profilePage.newPostText,
+  //     likeCount: "0",
+  //   });
+  //   this._state.profilePage.newPostText = "";
+  //   this._reRenderTree(store);
+  // },
+
+  // updateNewPost(newText) {
+  //   this._state.profilePage.newPostText = newText;
+  //   this._reRenderTree(store);
+  // },
+
+  // addNewMessageFirst() {
+  //   let newId =
+  //     +this._state.dialogsPage.messagesData.firstUser[
+  //       this._state.dialogsPage.messagesData.firstUser.length - 1
+  //     ].id + 1;
+  //   this._state.dialogsPage.messagesData.firstUser.push({
+  //     id: newId,
+  //     message: this._state.dialogsPage.messagesData.newFirstUserMessage,
+  //   });
+
+  //   this._state.dialogsPage.messagesData.newFirstUserMessage = "";
+
+  //   this._reRenderTree(store);
+  // },
+
+  // updateNewMessageFirst(newMessage) {
+  //   this._state.dialogsPage.messagesData.newFirstUserMessage = newMessage;
+  //   this._reRenderTree(store);
+  // },
+
+  dispatch(action) {
+    // action = {type: "ADD", value: "value"}
+    if (action.type === "ADD-NEW-POST") {
+      let length =  this._state.profilePage.postDate.length - 1;   
+      let newId = +this._state.profilePage.postDate[length].id + 1;
+      this._state.profilePage.postDate.push({
+        id: newId + "",
+        message: this._state.profilePage.newPostText,
+        likeCount: "0",
+      });
+      this._state.profilePage.newPostText = "";
+      this._reRenderTree(store);
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.profilePage.newPostText = action.newText;
+      this._reRenderTree(store);
+    } else if (action.type === "ADD-NEW-MESSAGE-FIRST-USER") {
+      let length = this._state.dialogsPage.messagesData.firstUser.length - 1;
+      let newId = +this._state.dialogsPage.messagesData.firstUser[length].id + 1;
       this._state.dialogsPage.messagesData.firstUser.push({
       id: newId,
       message: this._state.dialogsPage.messagesData.newFirstUserMessage,
     });
-  
     this._state.dialogsPage.messagesData.newFirstUserMessage = "";
-  
     this._reRenderTree(store);
+    } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT-FIRST-USER") {
+      this._state.dialogsPage.messagesData.newFirstUserMessage = action.newMessage;
+      this._reRenderTree(store);
+    }
   },
-  
-  updateNewMessageFirst (newMessage) {
-    this._state.dialogsPage.messagesData.newFirstUserMessage = newMessage;
-    this._reRenderTree(store);
-  }
- }
+};
 
 export default store;
