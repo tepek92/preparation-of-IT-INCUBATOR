@@ -1,10 +1,4 @@
-import state, {
-  subscriber,
-  addNewPost,
-  updateNewPost,
-  addNewMessageFirst,
-  updateNewMessageFirst,
-} from "./redux/state";
+import store from "./redux/state";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -13,36 +7,16 @@ import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const reRenderTree = (
-  state,
-  addNewPost,
-  updateNewPost,
-  addNewMessageFirst,
-  updateNewMessageFirst
-) => {
+const reRenderTree = (store) => {
   root.render(
     <React.StrictMode>
-      <App
-        state={state}
-        addNewPost={addNewPost}
-        updateNewPost={updateNewPost}
-        addNewMessageFirst={addNewMessageFirst}
-        updateNewMessageFirst={updateNewMessageFirst}
-      />
+      <App store={store} />
     </React.StrictMode>
   );
 };
 
-
-reRenderTree(
-  state,
-  addNewPost,
-  updateNewPost,
-  addNewMessageFirst,
-  updateNewMessageFirst
-);
-
-subscriber(reRenderTree);
+reRenderTree(store);
+store.subscriber(reRenderTree);
 
 
 // If you want to start measuring performance in your app, pass a function
