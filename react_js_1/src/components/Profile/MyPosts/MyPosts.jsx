@@ -1,15 +1,15 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import React from "react";
+import { addNewPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/state";
 
 const MyPosts = (props) => {
   let postElement = props.profilePage.postDate.map(p => <Post message={p.message} likeCount={p.likeCount} />);
 
   let textElement = React.createRef();
 
-  const clickButton = () => props.dispatch({type: "ADD-NEW-POST"});
-
-  const updatePost = () => props.dispatch({type: "UPDATE-NEW-POST-TEXT", newText: textElement.current.value}); 
+  const clickButton = () => props.dispatch(addNewPostActionCreator());
+  const updatePost = () => props.dispatch(updateNewPostTextActionCreator(textElement.current.value)); 
 
   return (
     <div className={s.myPosts}>

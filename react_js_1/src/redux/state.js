@@ -1,3 +1,8 @@
+const ADD_NEW_POST = "ADD-NEW-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_NEW_MESSAGE_FIRST_USER = "ADD-NEW-MESSAGE-FIRST-USER";
+const UPDATE_NEW_MESSAGE_TEXT_FIRST_USER = "UPDATE-NEW-MESSAGE-TEXT-FIRST-USER";
+
 let store = {
   _state: {
     profilePage: {
@@ -72,46 +77,8 @@ let store = {
     return this._state;
   },
 
-  // addNewPost() {
-  //   let newId =
-  //     +this._state.profilePage.postDate[this._state.profilePage.postDate.length - 1].id + 1;
-  //   this._state.profilePage.postDate.push({
-  //     id: newId + "",
-  //     message: this._state.profilePage.newPostText,
-  //     likeCount: "0",
-  //   });
-  //   this._state.profilePage.newPostText = "";
-  //   this._reRenderTree(store);
-  // },
-
-  // updateNewPost(newText) {
-  //   this._state.profilePage.newPostText = newText;
-  //   this._reRenderTree(store);
-  // },
-
-  // addNewMessageFirst() {
-  //   let newId =
-  //     +this._state.dialogsPage.messagesData.firstUser[
-  //       this._state.dialogsPage.messagesData.firstUser.length - 1
-  //     ].id + 1;
-  //   this._state.dialogsPage.messagesData.firstUser.push({
-  //     id: newId,
-  //     message: this._state.dialogsPage.messagesData.newFirstUserMessage,
-  //   });
-
-  //   this._state.dialogsPage.messagesData.newFirstUserMessage = "";
-
-  //   this._reRenderTree(store);
-  // },
-
-  // updateNewMessageFirst(newMessage) {
-  //   this._state.dialogsPage.messagesData.newFirstUserMessage = newMessage;
-  //   this._reRenderTree(store);
-  // },
-
   dispatch(action) {
-    // action = {type: "ADD", value: "value"}
-    if (action.type === "ADD-NEW-POST") {
+    if (action.type === ADD_NEW_POST) {
       let length =  this._state.profilePage.postDate.length - 1;   
       let newId = +this._state.profilePage.postDate[length].id + 1;
       this._state.profilePage.postDate.push({
@@ -121,10 +88,10 @@ let store = {
       });
       this._state.profilePage.newPostText = "";
       this._reRenderTree(store);
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText;
       this._reRenderTree(store);
-    } else if (action.type === "ADD-NEW-MESSAGE-FIRST-USER") {
+    } else if (action.type === ADD_NEW_MESSAGE_FIRST_USER) {
       let length = this._state.dialogsPage.messagesData.firstUser.length - 1;
       let newId = +this._state.dialogsPage.messagesData.firstUser[length].id + 1;
       this._state.dialogsPage.messagesData.firstUser.push({
@@ -133,11 +100,20 @@ let store = {
     });
     this._state.dialogsPage.messagesData.newFirstUserMessage = "";
     this._reRenderTree(store);
-    } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT-FIRST-USER") {
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT_FIRST_USER) {
       this._state.dialogsPage.messagesData.newFirstUserMessage = action.newMessage;
       this._reRenderTree(store);
     }
   },
 };
+
+export const addNewPostActionCreator = () => 
+({type: ADD_NEW_POST});
+export const updateNewPostTextActionCreator = (newText) => 
+({type: UPDATE_NEW_POST_TEXT, newText: newText});
+export const addNewMessageFirstUserActionCreator = () => 
+({type: ADD_NEW_MESSAGE_FIRST_USER});
+export const updateNewMessageTextFirstUserActionCreator = (newMessage) => 
+({type: UPDATE_NEW_MESSAGE_TEXT_FIRST_USER, newMessage: newMessage});
 
 export default store;
