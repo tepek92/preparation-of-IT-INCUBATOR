@@ -7,15 +7,15 @@ import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const reRenderTree = (store) => {
+const reRenderTree = (state) => {
   root.render(
     <React.StrictMode>
-      <App store={store} />
+      <App state={state} dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>
   );
 };
 
-reRenderTree(store);
+reRenderTree(store.getState());
 store.subscriber(reRenderTree);
 
 

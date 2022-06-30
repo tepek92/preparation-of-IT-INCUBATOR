@@ -1,7 +1,5 @@
-const ADD_NEW_POST = "ADD-NEW-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_NEW_MESSAGE_FIRST_USER = "ADD-NEW-MESSAGE-FIRST-USER";
-const UPDATE_NEW_MESSAGE_TEXT_FIRST_USER = "UPDATE-NEW-MESSAGE-TEXT-FIRST-USER";
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
 
 let store = {
   _state: {
@@ -78,42 +76,10 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_NEW_POST) {
-      let length =  this._state.profilePage.postDate.length - 1;   
-      let newId = +this._state.profilePage.postDate[length].id + 1;
-      this._state.profilePage.postDate.push({
-        id: newId + "",
-        message: this._state.profilePage.newPostText,
-        likeCount: "0",
-      });
-      this._state.profilePage.newPostText = "";
-      this._reRenderTree(store);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this._reRenderTree(store);
-    } else if (action.type === ADD_NEW_MESSAGE_FIRST_USER) {
-      let length = this._state.dialogsPage.messagesData.firstUser.length - 1;
-      let newId = +this._state.dialogsPage.messagesData.firstUser[length].id + 1;
-      this._state.dialogsPage.messagesData.firstUser.push({
-      id: newId,
-      message: this._state.dialogsPage.messagesData.newFirstUserMessage,
-    });
-    this._state.dialogsPage.messagesData.newFirstUserMessage = "";
-    this._reRenderTree(store);
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT_FIRST_USER) {
-      this._state.dialogsPage.messagesData.newFirstUserMessage = action.newMessage;
-      this._reRenderTree(store);
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._reRenderTree(this._state);
   },
 };
-
-export const addNewPostActionCreator = () => 
-({type: ADD_NEW_POST});
-export const updateNewPostTextActionCreator = (newText) => 
-({type: UPDATE_NEW_POST_TEXT, newText: newText});
-export const addNewMessageFirstUserActionCreator = () => 
-({type: ADD_NEW_MESSAGE_FIRST_USER});
-export const updateNewMessageTextFirstUserActionCreator = (newMessage) => 
-({type: UPDATE_NEW_MESSAGE_TEXT_FIRST_USER, newMessage: newMessage});
 
 export default store;

@@ -4,7 +4,7 @@ import React from "react";
 import {
   addNewPostActionCreator,
   updateNewPostTextActionCreator,
-} from "../../../redux/state";
+} from "../../../redux/profileReducer";
 
 const MyPosts = (props) => {
   let postElement = props.profilePage.postDate.map((p) => (

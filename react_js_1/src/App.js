@@ -22,8 +22,8 @@ const App = (props) => {
               path="/profile"
               element={
                 <Profile
-                  profilePage={props.store.getState().profilePage}
-                  dispatch={props.store.dispatch.bind(props.store)}
+                  profilePage={props.state.profilePage}
+                  dispatch={props.dispatch}
                 />
               }
             />
@@ -31,8 +31,8 @@ const App = (props) => {
               path="/dialogs/*"
               element={
                 <Dialogs
-                  dialogsPage={props.store.getState().dialogsPage}
-                  dispatch={props.store.dispatch.bind(props.store)}
+                  dialogsPage={props.state.dialogsPage}
+                  dispatch={props.dispatch}
                 />
               }
             />

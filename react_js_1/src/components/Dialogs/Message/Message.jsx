@@ -5,7 +5,7 @@ import React from "react";
 import {
   addNewMessageFirstUserActionCreator,
   updateNewMessageTextFirstUserActionCreator,
-} from "../../../redux/state";
+} from "../../../redux/dialogsReducer";
 
 const Message = (props) => {
   let firstUser = props.dialogsPage.messagesData.firstUser.map((message) => (
