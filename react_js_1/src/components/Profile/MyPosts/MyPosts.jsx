@@ -1,26 +1,35 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import React from "react";
-import { addNewPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/state";
+import {
+  addNewPostActionCreator,
+  updateNewPostTextActionCreator,
+} from "../../../redux/state";
 
 const MyPosts = (props) => {
-  let postElement = props.profilePage.postDate.map(p => <Post message={p.message} likeCount={p.likeCount} />);
+  let postElement = props.profilePage.postDate.map((p) => (
+    <Post message={p.message} likeCount={p.likeCount} />
+  ));
 
-  let textElement = React.createRef();
+  const addNewPost = () => props.dispatch(addNewPostActionCreator());
+  const updatePostText = (e) => {
+    let newPost = e.target.value;
+    props.dispatch(updateNewPostTextActionCreator(newPost));
+  };
 
-  const clickButton = () => props.dispatch(addNewPostActionCreator());
-  const updatePost = () => props.dispatch(updateNewPostTextActionCreator(textElement.current.value)); 
+  let newPostText = props.profilePage.newPostText;
 
   return (
     <div className={s.myPosts}>
       My posts
       <br />
-      <textarea onChange={ updatePost } ref={ textElement } value={props.profilePage.newPostText}></textarea>
+      <textarea
+        onChange={updatePostText}
+        value={newPostText}
+      ></textarea>
       <br />
-      <button onClick={ clickButton }>Добавить</button>
-      <div>
-        { postElement }
-      </div>
+      <button onClick={addNewPost}>Добавить</button>
+      <div>{postElement}</div>
     </div>
   );
 };

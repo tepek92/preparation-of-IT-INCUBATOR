@@ -2,7 +2,10 @@ import s from "./Message.module.css";
 import Firstuser from "./Firstuser/Firstuser";
 import Seconduser from "./Seconduser/Seconduser";
 import React from "react";
-import { addNewMessageFirstUserActionCreator, updateNewMessageTextFirstUserActionCreator } from "../../../redux/state";
+import {
+  addNewMessageFirstUserActionCreator,
+  updateNewMessageTextFirstUserActionCreator,
+} from "../../../redux/state";
 
 const Message = (props) => {
   let firstUser = props.dialogsPage.messagesData.firstUser.map((message) => (
@@ -12,26 +15,27 @@ const Message = (props) => {
     <Seconduser message={message.message} />
   ));
 
-  let textElement = React.createRef();
-  const clickButtom = () =>
+  const addNewMessage = () =>
     props.dispatch(addNewMessageFirstUserActionCreator());
-  const updateMessage = () =>
-    props.dispatch(updateNewMessageTextFirstUserActionCreator(textElement.current.value));
+  const updateNewMessageText = (e) => {
+    let newMessage = e.target.value;
+    props.dispatch(updateNewMessageTextFirstUserActionCreator(newMessage));
+  };
+  let updateMessageText = props.dialogsPage.messagesData.newFirstUserMessage;
 
   return (
     <div className={s.message}>
       <div className={s.first}>
-        {firstUser}
+        { firstUser }
         <textarea
           className={s.textarea}
-          onChange={ updateMessage }
-          ref={textElement}
-          value={props.dialogsPage.messagesData.newFirstUserMessage}
+          onChange={updateNewMessageText}
+          value={updateMessageText}
         ></textarea>
         <br />
-        <button onClick={ clickButtom }>Отправить</button>
+        <button onClick={addNewMessage}>Отправить</button>
       </div>
-      <div className={s.second}>{secondUser}</div>
+      <div className={s.second}>{ secondUser }</div>
     </div>
   );
 };
