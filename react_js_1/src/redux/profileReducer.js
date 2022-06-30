@@ -1,7 +1,21 @@
 const ADD_NEW_POST = "ADD_NEW_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 
-const profileReducer = (state, action) => {
+let initialState = {
+    postDate: [
+      { id: "1", message: "Всем хорошего дня!", likeCount: "44" },
+      { id: "2", message: "С днем города!", likeCount: "13" },
+      {
+        id: "3",
+        message: "Не всех можно потерять, но всех можно забыть :(",
+        likeCount: "4",
+      },
+      { id: "4", message: "Abgegfgfe", likeCount: "0" },
+    ],
+    newPostText: "",
+  }
+
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW_POST:
       let length = state.postDate.length - 1;
@@ -15,7 +29,6 @@ const profileReducer = (state, action) => {
       return state;
     case UPDATE_NEW_POST_TEXT:
       state.newPostText = action.newText;
-      debugger;
       return state;
     default:
       return state;
