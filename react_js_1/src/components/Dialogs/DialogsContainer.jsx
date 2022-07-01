@@ -1,27 +1,32 @@
-import s from "./Dialogs.module.css";
 import Dialogs from "./Dialogs";
 import {
   addNewMessageFirstUserActionCreator,
   updateNewMessageTextFirstUserActionCreator,
 } from "../../redux/dialogsReducer";
+import StoreContext from "../../StoreContext";
 
-const DialogsContainer = (props) => {
-  const onAddNewMessage = () =>
-    props.store.dispatch(addNewMessageFirstUserActionCreator());
-  const onUpdateNewMessageText = (newMessage) => {
-    props.store.dispatch(
-      updateNewMessageTextFirstUserActionCreator(newMessage)
-    );
-  };
+const DialogsContainer = () => {
   return (
-    <div>
-      <Dialogs
-        addNewMessage={onAddNewMessage}
-        updateNewMessageText={onUpdateNewMessageText}
-        dialogsData={props.store.getState().dialogsPage.dialogsData}
-        messagesData={props.store.getState().dialogsPage.messagesData}
-      />
-    </div>
+    <StoreContext.Consumer>
+      {(store) => {
+        const onAddNewMessage = () =>
+          store.dispatch(addNewMessageFirstUserActionCreator());
+        const onUpdateNewMessageText = (newMessage) => {
+          store.dispatch(
+            updateNewMessageTextFirstUserActionCreator(newMessage)
+          );
+        };
+
+        return (
+          <Dialogs
+            addNewMessage={onAddNewMessage}
+            updateNewMessageText={onUpdateNewMessageText}
+            dialogsData={store.getState().dialogsPage.dialogsData}
+            messagesData={store.getState().dialogsPage.messagesData}
+          />
+        );
+      }}
+    </StoreContext.Consumer>
   );
 };
 
