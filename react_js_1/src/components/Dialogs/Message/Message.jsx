@@ -1,32 +1,28 @@
+import React from "react";
 import s from "./Message.module.css";
+
 import Firstuser from "./Firstuser/Firstuser";
 import Seconduser from "./Seconduser/Seconduser";
-import React from "react";
-import {
-  addNewMessageFirstUserActionCreator,
-  updateNewMessageTextFirstUserActionCreator,
-} from "../../../redux/dialogsReducer";
 
 const Message = (props) => {
-  let firstUser = props.dialogsPage.messagesData.firstUser.map((message) => (
+  let firstUser = props.messagesData.firstUser.map((message) => (
     <Firstuser message={message.message} />
   ));
-  let secondUser = props.dialogsPage.messagesData.secondUser.map((message) => (
+  let secondUser = props.messagesData.secondUser.map((message) => (
     <Seconduser message={message.message} />
   ));
 
-  const addNewMessage = () =>
-    props.dispatch(addNewMessageFirstUserActionCreator());
+  const addNewMessage = () => props.addNewMessage();
   const updateNewMessageText = (e) => {
     let newMessage = e.target.value;
-    props.dispatch(updateNewMessageTextFirstUserActionCreator(newMessage));
+    props.updateNewMessageText(newMessage);
   };
-  let updateMessageText = props.dialogsPage.messagesData.newFirstUserMessage;
+  let updateMessageText = props.messagesData.newFirstUserMessage;
 
   return (
     <div className={s.message}>
       <div className={s.first}>
-        { firstUser }
+        {firstUser}
         <textarea
           className={s.textarea}
           onChange={updateNewMessageText}
@@ -35,7 +31,7 @@ const Message = (props) => {
         <br />
         <button onClick={addNewMessage}>Отправить</button>
       </div>
-      <div className={s.second}>{ secondUser }</div>
+      <div className={s.second}>{secondUser}</div>
     </div>
   );
 };

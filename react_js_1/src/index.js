@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const reRenderTree = (state = store.getState()) => {
   root.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)}/>
+      <App store={store} />
     </React.StrictMode>
   );
 };
@@ -19,7 +19,6 @@ store.subscribe(() => {
   let state = store.getState();
   reRenderTree(state);
 });
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
