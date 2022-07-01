@@ -1,3 +1,4 @@
+import React from 'react';
 import s from "./Navbar.module.css";
 import LinkBar from "./Linkbar/Linkbar";
 

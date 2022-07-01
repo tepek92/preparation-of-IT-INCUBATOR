@@ -1,3 +1,4 @@
+import React from 'react';
 import presswall from "../../../img/presswall.jpg";
 import avatar from "../../../img/avatar.jpg";
 import s from "./Profileinfo.module.css";

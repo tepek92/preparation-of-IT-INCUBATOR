@@ -14,7 +14,6 @@ const MyPosts = (props) => {
   };
 
   let newPostText = props.newPostText;
-
   return (
     <div className={s.myPosts}>
       My posts

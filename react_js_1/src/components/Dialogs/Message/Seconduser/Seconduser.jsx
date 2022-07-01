@@ -1,3 +1,4 @@
+import React from 'react';
 import s from "./Seconduser.module.css";
 
 const Seconduser = (props) => {
