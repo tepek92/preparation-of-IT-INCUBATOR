@@ -24,8 +24,7 @@ let initialState = {
     {
       id: "4",
       name: "Kisa 1991",
-      avatar:
-        "https://shutnikov.club/wp-content/uploads/2020/01/enimals14.jpg",
+      avatar: "https://shutnikov.club/wp-content/uploads/2020/01/enimals14.jpg",
     },
     {
       id: "5",
@@ -51,25 +50,28 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_MESSAGE_FIRST_USER: {
-      let copyState = {...state};
-      let length = copyState.messagesData.firstUser.length - 1;
-      let newId = +copyState.messagesData.firstUser[length].id + 1;
-      copyState.messagesData = {...state.messagesData};
-      copyState.messagesData.firstUser = [...state.messagesData.firstUser];
-      copyState.messagesData.firstUser.push({
-        id: newId,
-        message: copyState.messagesData.newFirstUserMessage,
-      });
-      copyState.messagesData.newFirstUserMessage = "";
-      return copyState;
-    }
-    case UPDATE_NEW_MESSAGE_TEXT_FIRST_USER: {
-      let copyState = {...state};
-      copyState.messagesData = {...state.messagesData};
-      copyState.messagesData.newFirstUserMessage = action.newMessage;
-      return copyState;
-    }
+    case ADD_NEW_MESSAGE_FIRST_USER:
+      let length = state.messagesData.firstUser.length - 1;
+      let newId = +state.messagesData.firstUser[length].id + 1;
+      return {
+        ...state,
+        messagesData: {
+          ...state.messagesData,
+          firstUser: [
+            ...state.messagesData.firstUser,
+            { id: newId, message: state.messagesData.newFirstUserMessage },
+          ],
+          newFirstUserMessage: "",
+        },
+      };
+    case UPDATE_NEW_MESSAGE_TEXT_FIRST_USER:
+      return {
+        ...state,
+        messagesData: {
+          ...state.messagesData,
+          newFirstUserMessage: action.newMessage,
+        },
+      };
     default:
       return state;
   }
