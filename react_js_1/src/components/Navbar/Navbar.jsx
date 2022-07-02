@@ -16,9 +16,9 @@ const Navbar = () => {
       </div>
       <div className={s.friends}>
       <LinkBar path="/friends" text="Friends" />
-      <img src="https://shutnikov.club/wp-content/uploads/2020/01/1_PiHoomzwh9Plr9_GA26JcA.png" />
-      <img src="https://shutnikov.club/wp-content/uploads/2020/01/mschropp_avatar-300x300.png" />
-      <img src="https://i1.photo.2gis.com/images/profile/30258560049350742_9a4a.jpg" />
+      <img src="https://shutnikov.club/wp-content/uploads/2020/01/1_PiHoomzwh9Plr9_GA26JcA.png" alt="" />
+      <img src="https://shutnikov.club/wp-content/uploads/2020/01/mschropp_avatar-300x300.png" alt="" />
+      <img src="https://i1.photo.2gis.com/images/profile/30258560049350742_9a4a.jpg" alt="" />
       </div>
     </nav>
   );

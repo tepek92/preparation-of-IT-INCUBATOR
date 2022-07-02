@@ -1,11 +1,10 @@
-import React from 'react';
 import MyPosts from "./MyPosts";
+import { connect } from 'react-redux';
+
 import {
   addNewPostActionCreator,
   updateNewPostTextActionCreator,
 } from "../../../redux/profileReducer";
-// import StoreContext from "../../../StoreContext";
-import { connect } from 'react-redux';
 
 // const MyPostsContainer = () => {
 //   return (

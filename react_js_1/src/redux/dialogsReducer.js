@@ -51,18 +51,25 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_MESSAGE_FIRST_USER:
-      let length = state.messagesData.firstUser.length - 1;
-      let newId = +state.messagesData.firstUser[length].id + 1;
-      state.messagesData.firstUser.push({
+    case ADD_NEW_MESSAGE_FIRST_USER: {
+      let copyState = {...state};
+      let length = copyState.messagesData.firstUser.length - 1;
+      let newId = +copyState.messagesData.firstUser[length].id + 1;
+      copyState.messagesData = {...state.messagesData};
+      copyState.messagesData.firstUser = [...state.messagesData.firstUser];
+      copyState.messagesData.firstUser.push({
         id: newId,
-        message: state.messagesData.newFirstUserMessage,
+        message: copyState.messagesData.newFirstUserMessage,
       });
-      state.messagesData.newFirstUserMessage = "";
-      return state;
-    case UPDATE_NEW_MESSAGE_TEXT_FIRST_USER:
-      state.messagesData.newFirstUserMessage = action.newMessage;
-      return state;
+      copyState.messagesData.newFirstUserMessage = "";
+      return copyState;
+    }
+    case UPDATE_NEW_MESSAGE_TEXT_FIRST_USER: {
+      let copyState = {...state};
+      copyState.messagesData = {...state.messagesData};
+      copyState.messagesData.newFirstUserMessage = action.newMessage;
+      return copyState;
+    }
     default:
       return state;
   }
