@@ -9,7 +9,7 @@ import {
   setIsFetchingAC,
 } from "../../redux/usersReducer";
 import Users from "./Users";
-import preloader from "../../img/oval.svg"
+import Preloader from "../common/Preloader/Preloader";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -41,7 +41,7 @@ class UsersContainer extends React.Component {
 
   render() {
     return (
-      <div>{this.props.isFetching ? <img src={preloader} alt=""/> :  
+      <div>{this.props.isFetching ? <Preloader /> :  
         <Users
           users={this.props.users}
           currentPage={this.props.currentPage}
