@@ -341,3 +341,24 @@ const warnTheSheep = (queue) =>
 
 //Convert a String to a Number!
 const stringToNumber = (str) => +str;
+
+
+//  Камень ножницы бумага
+const rps = (p1, p2) => {
+  let win = {
+    rock: 'scissors',
+    paper: 'rock',
+    scissors: 'paper'
+  };
+  
+  if (p1 === p2) return "Draw!";
+  return win[p1] == p2 ? "Player 1 won!" : "Player 2 won!";
+};
+
+const rps = (p1, p2) => {
+  let win = {rock: 'scissors', paper: 'rock', scissors: 'paper'};  
+  return p1 == p2 ? "Draw!" : win[p1] == p2 ? "Player 1 won!" : "Player 2 won!";
+};
+
+//Merge two sorted arrays into one
+const mergeArrays = (arr1, arr2) => [...new Set([...arr1, ...arr2].sort((a,b) => a-b))];
