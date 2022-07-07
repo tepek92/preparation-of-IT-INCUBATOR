@@ -3,6 +3,7 @@ const FOLLOW = "FOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "CURRENT_PAGE";
 const SET_TOTAL_COUNT_USERS = "TOTAL_COUNT_USERS";
+const SET_IS_FETCHING = "SET_IS_FETCHING";
 
 // Стартовый стейт
 let initialState = {
@@ -10,6 +11,7 @@ let initialState = {
   currentPage: 1,
   totalCount: 0,
   usersCountPage: 10,
+  isFetching: false
 };
 
 // Сам редьюсер - это функция, которая на вход получает стейт и экшен, делает его копию, изменяет его и возвращает.
@@ -28,7 +30,7 @@ const usersReducer = (state = initialState, action) => {
     case SET_USERS:
       return {
         ...state,
-        users: action.users, // ...state.users,
+        users: action.users,
       };
     case SET_CURRENT_PAGE:
       return {
@@ -39,6 +41,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         totalCount: action.totalCount,
+      };
+      case SET_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
       };
     default:
       return state;
@@ -55,6 +62,7 @@ export const setTotalCountUsersAC = (totalCount) => ({
   type: SET_TOTAL_COUNT_USERS,
   totalCount: totalCount,
 });
+export const setIsFetchingAC = (isFetching) => ({type: SET_IS_FETCHING, isFetching: isFetching});
 
 // Сосздаем экшен криейторы - создают экшены - экшем это объект у которого как минимум есть тип
 export default usersReducer;
