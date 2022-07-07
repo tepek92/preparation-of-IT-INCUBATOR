@@ -77,10 +77,10 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-export const addNewMessageFirstUserActionCreator = () => ({
+export const addNewMessage = () => ({
   type: ADD_NEW_MESSAGE_FIRST_USER,
 });
-export const updateNewMessageTextFirstUserActionCreator = (newMessage) => ({
+export const updateNewMessageText = (newMessage) => ({
   type: UPDATE_NEW_MESSAGE_TEXT_FIRST_USER,
   newMessage: newMessage,
 });

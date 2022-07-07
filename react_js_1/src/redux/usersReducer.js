@@ -52,17 +52,17 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const followAC = (userId) => ({ type: FOLLOW, id: userId });
-export const setUsersAC = (users) => ({ type: SET_USERS, users: users });
-export const setCurrentPageAC = (currentPage) => ({
+export const follow = (userId) => ({ type: FOLLOW, id: userId });
+export const setUsers = (users) => ({ type: SET_USERS, users: users });
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage: currentPage,
 });
-export const setTotalCountUsersAC = (totalCount) => ({
+export const setTotalCountUsers = (totalCount) => ({
   type: SET_TOTAL_COUNT_USERS,
   totalCount: totalCount,
 });
-export const setIsFetchingAC = (isFetching) => ({type: SET_IS_FETCHING, isFetching: isFetching});
+export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching: isFetching});
 
 // Сосздаем экшен криейторы - создают экшены - экшем это объект у которого как минимум есть тип
 export default usersReducer;

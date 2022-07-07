@@ -2,11 +2,11 @@ import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import {
-  followAC,
-  setCurrentPageAC,
-  setTotalCountUsersAC,
-  setUsersAC,
-  setIsFetchingAC,
+  follow,
+  setCurrentPage,
+  setTotalCountUsers,
+  setUsers,
+  setIsFetching,
 } from "../../redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
@@ -41,15 +41,19 @@ class UsersContainer extends React.Component {
 
   render() {
     return (
-      <div>{this.props.isFetching ? <Preloader /> :  
-        <Users
-          users={this.props.users}
-          currentPage={this.props.currentPage}
-          totalCount={this.props.totalCount}
-          usersCountPage={this.props.usersCountPage}
-          follow={this.props.follow}
-          setNewCurrentPage={this.setNewCurrentPage}
-        />}
+      <div>
+        {this.props.isFetching ? (
+          <Preloader />
+        ) : (
+          <Users
+            users={this.props.users}
+            currentPage={this.props.currentPage}
+            totalCount={this.props.totalCount}
+            usersCountPage={this.props.usersCountPage}
+            follow={this.props.follow}
+            setNewCurrentPage={this.setNewCurrentPage}
+          />
+        )}
       </div>
     );
   }
@@ -61,18 +65,13 @@ const mapStateToProps = (state) => ({
   totalCount: state.usersPage.totalCount,
   usersCountPage: state.usersPage.usersCountPage,
   pagesCount: state.usersPage.pagesCount,
-  isFetching: state.usersPage.isFetching
+  isFetching: state.usersPage.isFetching,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userId) => dispatch(followAC(userId)),
-    setUsers: (users) => dispatch(setUsersAC(users)),
-    setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
-    setTotalCountUsers: (totalCount) =>
-      dispatch(setTotalCountUsersAC(totalCount)),
-    setIsFetching: (isFetching) => dispatch(setIsFetchingAC(isFetching)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+  follow,
+  setUsers,
+  setCurrentPage,
+  setTotalCountUsers,
+  setIsFetching,
+})(UsersContainer);
