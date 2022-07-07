@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../img/user.png";
+import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
   let page = [];
@@ -25,18 +26,21 @@ const Users = (props) => {
           onClick={() => props.setNewCurrentPage(p)}
         >
           {" "}
-          {p}{" "}
+          {p}
+          {" "}
         </span>
       ))}
       <span onClick={() => props.setNewCurrentPage(pagesCount)}>{">>>"}</span>
       {props.users.map((u) => {
         return (
           <div>
+            <NavLink to={"/profile/" + u.id}>
             <img
               className={s.userAvatar}
               src={u.photos.small || userPhoto}
               alt=""
             />
+            </NavLink>
             <div> {u.name} </div>
             <div> {u.status} </div>
             <button onClick={() => props.follow(u.id)}>
