@@ -1,9 +1,38 @@
 .header {
-    grid-area: h;
-    background-color: rgb(96, 126, 44);
-  }
-  
-  .header img {
-    margin-left: 50px;
-    width: 80px;
-  }
+  grid-area: h;
+  background-color: rgb(96, 126, 44);
+}
+
+.header img {
+  margin-left: 50px;
+  width: 80px;
+}
+
+.header .auth {
+  float: right;
+}
+
+.header .avatar {
+  width: 50px;
+  border-radius: 50%;
+  float: right;
+}
+
+.header .auth a {
+  text-decoration: none;
+  color: inherit;
+}
+/* 
+.auth div {
+  float: right;
+  width: 8em;
+  max-width: 100%;
+  min-height: 2em;
+  border: 1px solid orange;
+  background: #fff5d7;
+}
+.auth::after { очистить float 
+  content: "";
+  display: block; 
+  clear: both;
+} */
