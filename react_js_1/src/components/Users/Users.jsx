@@ -18,22 +18,25 @@ const Users = (props) => {
 
   let slicePage = page.slice(leftP, rigtP);
 
-  const followApi = (id, followStatus) => {
+  const followApi = (id, followStatus) => { 
+    props.setIsDisabled(id, true);
     if (followStatus) {
       followAPI.deleteFollowed(id).then((data) => {
         if (data.resultCode == 0) {
           props.follow(id);
         }
+        props.setIsDisabled(id, false);
       });
     } else {
       followAPI.postFollowed(id).then((data) => {
         if (data.resultCode == 0) {
           props.follow(id);
         }
+        props.setIsDisabled(id, false);
       });
     }
+    
   };
-
   return (
     <div>
       <span onClick={() => props.setNewCurrentPage(1)}>{"<<<"}</span>
@@ -59,7 +62,7 @@ const Users = (props) => {
             </NavLink>
             <div> {u.name} </div>
             <div> {u.status} </div>
-            <button onClick={() => followApi(u.id, u.followed)}>
+            <button disabled={ props.isFollowedProgress.some(id => id === u.id) } onClick={() => followApi(u.id, u.followed)}>
               {u.followed ? "Unfollow" : "Follow"}
             </button>
           </div>
