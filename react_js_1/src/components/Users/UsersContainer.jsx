@@ -1,37 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  follow,
-  setCurrentPage,
-  setTotalCountUsers,
-  setUsers,
-  setIsFetching,
-  setIsDisabled
-} from "../../redux/usersReducer";
+import { follow, getUsers } from "../../redux/usersReducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import { usersAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    // alert("NEW");
-    this.props.setIsFetching(true);
-    usersAPI.getUsers(this.props.currentPage, this.props.usersCountPage).then(
-      (data) => {
-        this.props.setIsFetching(false);
-        this.props.setUsers(data.items);
-        this.props.setTotalCountUsers(data.totalCount);
-      }
-    );
+    this.props.getUsers(this.props.currentPage, this.props.usersCountPage);
   }
 
   setNewCurrentPage = (currentPage) => {
-    this.props.setCurrentPage(currentPage);
-    this.props.setIsFetching(true);
-    usersAPI.getUsers(currentPage, this.props.usersCountPage).then((data) => {
-      this.props.setUsers(data.items);
-      this.props.setIsFetching(false);
-    });
+    this.props.getUsers(currentPage, this.props.usersCountPage);
   };
 
   render() {
@@ -63,14 +42,7 @@ const mapStateToProps = (state) => ({
   usersCountPage: state.usersPage.usersCountPage,
   pagesCount: state.usersPage.pagesCount,
   isFetching: state.usersPage.isFetching,
-  isFollowedProgress: state.usersPage.isFollowedProgress
+  isFollowedProgress: state.usersPage.isFollowedProgress,
 });
 
-export default connect(mapStateToProps, {
-  follow,
-  setUsers,
-  setCurrentPage,
-  setTotalCountUsers,
-  setIsFetching,
-  setIsDisabled
-})(UsersContainer);
+export default connect(mapStateToProps, { follow, getUsers })(UsersContainer);

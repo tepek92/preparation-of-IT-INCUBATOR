@@ -1,3 +1,5 @@
+import { authAPI, profileAPI } from "../api/api";
+
 // Экшены, переменные
 const SET_USER_DATA_AUTH = "SET_USER_DATA_AUTH";
 const SET_USER_PHOTO = "SET_USER_PHOTO";
@@ -8,7 +10,7 @@ let initialState = {
   id: null,
   login: null,
   isAuthorized: false,
-  userPhoto: null
+  userPhoto: null,
 };
 
 // Сам редьюсер - это функция, которая на вход получает стейт и экшен, делает его копию, изменяет его и возвращает.
@@ -18,21 +20,39 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.authData,
-        isAuthorized: true
+        isAuthorized: true,
       };
-      case SET_USER_PHOTO:
+    case SET_USER_PHOTO:
       return {
         ...state,
-        userPhoto: action.userPhoto
+        userPhoto: action.userPhoto,
       };
     default:
       return state;
   }
 };
 
-export const setUserDataAuth = (authData) => ({type: SET_USER_DATA_AUTH, authData});
-export const setUserPhoto = (userPhoto) => ({type: SET_USER_PHOTO, userPhoto});
+export const setUserDataAuth = (authData) => ({
+  type: SET_USER_DATA_AUTH,
+  authData,
+});
+export const setUserPhoto = (userPhoto) => ({
+  type: SET_USER_PHOTO,
+  userPhoto,
+});
 
+export const setAuthStatus = () => {
+  return (dispatch) => {
+    authAPI.getMe().then((data) => {
+      if (data.login) {
+        dispatch(setUserDataAuth(data));
+        profileAPI.getProfile(data.id).then((data) => {
+          dispatch(setUserPhoto(data.photos.small));
+        });
+      }
+    });
+  };
+};
 
 // Сосздаем экшен криейторы - создают экшены - экшем это объект у которого как минимум есть тип
 export default authReducer;

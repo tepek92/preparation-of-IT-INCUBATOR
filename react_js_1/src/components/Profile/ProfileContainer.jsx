@@ -3,17 +3,13 @@ import { connect } from "react-redux";
 import { setUserProfile } from "../../redux/profileReducer";
 import Profile from "./Profile";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { profileAPI } from "../../api/api";
-
 
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.router.params.userId || 24767;
-    profileAPI.getProfile(userId).then((data) => {
-        this.props.setUserProfile(data);
-      });
+    this.props.setUserProfile(this.props.router.params.userId || 24767);
   }
+
   render() {
     return (
       <div>

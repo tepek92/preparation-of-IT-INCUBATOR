@@ -1,3 +1,5 @@
+import { usersAPI, followAPI } from "../api/api";
+
 // Экшены, переменные
 const FOLLOW = "FOLLOW";
 const SET_USERS = "SET_USERS";
@@ -13,7 +15,7 @@ let initialState = {
   totalCount: 0,
   usersCountPage: 10,
   isFetching: false,
-  isFollowedProgress: []
+  isFollowedProgress: [],
 };
 
 // Сам редьюсер - это функция, которая на вход получает стейт и экшен, делает его копию, изменяет его и возвращает.
@@ -44,24 +46,25 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         totalCount: action.totalCount,
       };
-      case SET_IS_FETCHING:
+    case SET_IS_FETCHING:
       return {
         ...state,
         isFetching: action.isFetching,
       };
-      case SET_IS_DISABLED_BUTTON:
+    case SET_IS_DISABLED_BUTTON:
       return {
         ...state,
-        isFollowedProgress: action.isDisable 
-        ? [...state.isFollowedProgress, action.userID] 
-        : state.isFollowedProgress.filter(id => id != action.userID)
-        };
+        isFollowedProgress: action.isDisable
+          ? [...state.isFollowedProgress, action.userID]
+          : state.isFollowedProgress.filter((id) => id !== action.userID),
+      };
     default:
       return state;
   }
 };
 
-export const follow = (userId) => ({ type: FOLLOW, id: userId });
+// Action creators
+export const followPosition = (userId) => ({ type: FOLLOW, id: userId });
 export const setUsers = (users) => ({ type: SET_USERS, users: users });
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
@@ -71,9 +74,49 @@ export const setTotalCountUsers = (totalCount) => ({
   type: SET_TOTAL_COUNT_USERS,
   totalCount: totalCount,
 });
-export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching: isFetching});
-export const setIsDisabled = (userID, isDisable) => ({type: SET_IS_DISABLED_BUTTON, userID: userID, isDisable: isDisable});
+export const setIsFetching = (isFetching) => ({
+  type: SET_IS_FETCHING,
+  isFetching: isFetching,
+});
+export const setIsDisabled = (userID, isDisable) => ({
+  type: SET_IS_DISABLED_BUTTON,
+  userID: userID,
+  isDisable: isDisable,
+});
 
+// Thunk Creator
+export const getUsers = (currentPage, usersCountPage) => {
+  return (dispatch) => {
+    dispatch(setCurrentPage(currentPage));
+    dispatch(setIsFetching(true));
+    usersAPI.getUsers(currentPage, usersCountPage).then((data) => {
+      dispatch(setUsers(data.items));
+      dispatch(setIsFetching(false));
+      dispatch(setTotalCountUsers(data.totalCount));
+    });
+  };
+};
+
+export const follow = (id, followStatus) => {
+  return (dispatch) => {
+    dispatch(setIsDisabled(id, true));
+    if (followStatus) {
+      followAPI.deleteFollowed(id).then((data) => {
+        if (data.resultCode === 0) {
+          dispatch(followPosition(id));
+        }
+        dispatch(setIsDisabled(id, false));
+      });
+    } else {
+      followAPI.postFollowed(id).then((data) => {
+        if (data.resultCode === 0) {
+          dispatch(followPosition(id));
+        }
+        dispatch(setIsDisabled(id, false));
+      });
+    }
+  };
+};
 
 // Сосздаем экшен криейторы - создают экшены - экшем это объект у которого как минимум есть тип
 export default usersReducer;
