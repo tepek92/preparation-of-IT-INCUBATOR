@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { setUserProfile } from "../../redux/profileReducer";
 import Profile from "./Profile";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 
 
 class ProfileContainer extends React.Component {
@@ -11,17 +11,16 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Profile {...this.props} userProfile={this.props.userProfile} />
-      </div>
-    );
+    return this.props.isAuthorized 
+    ? (<div><Profile {...this.props} userProfile={this.props.userProfile} /></div>)
+    : (<Navigate to={"/login"} />);
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     userProfile: state.profilePage.userProfile,
+    isAuthorized: state.auth.isAuthorized
   };
 };
 
