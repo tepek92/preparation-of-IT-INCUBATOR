@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { setUserProfile } from "../../redux/profileReducer";
 import Profile from "./Profile";
-import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
-
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import WithAuthNavigate from "../../hoc/WithAuthNavigate";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -11,16 +11,17 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    return this.props.isAuthorized 
-    ? (<div><Profile {...this.props} userProfile={this.props.userProfile} /></div>)
-    : (<Navigate to={"/login"} />);
+    return (
+      <div>
+        <Profile {...this.props} userProfile={this.props.userProfile} />
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     userProfile: state.profilePage.userProfile,
-    isAuthorized: state.auth.isAuthorized
   };
 };
 
@@ -35,6 +36,8 @@ function withRouter(Component) {
   return ComponentWithRouterProp;
 }
 
+let AuthNavigateComponent = WithAuthNavigate(ProfileContainer);
+
 export default connect(mapStateToProps, { setUserProfile })(
-  withRouter(ProfileContainer)
+  withRouter(AuthNavigateComponent)
 );

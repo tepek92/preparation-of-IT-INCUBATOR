@@ -2,11 +2,8 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import { Navigate } from "react-router-dom";
 
 const Dialogs = (props) => {
-
-  if (!props.isAuthorized) return <Navigate to={"/login"} />;
 
   let dialogElement = props.dialogsData.map((dialog) => (
     <Dialog id={dialog.id} name={dialog.name} avatar={dialog.avatar} />
