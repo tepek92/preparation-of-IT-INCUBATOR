@@ -26,4 +26,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default  compose(connect(mapStateToProps, { setUserProfile }), withRouter , WithAuthNavigate)(ProfileContainer)
+export default  compose(connect(mapStateToProps, { setUserProfile }), withRouter )(ProfileContainer)
+// убрал на вермя WithAuthNavigate проверку залогиненности

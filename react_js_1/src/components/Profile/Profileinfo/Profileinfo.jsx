@@ -3,6 +3,7 @@ import presswall from "../../../img/presswall.jpg";
 import avatar from "../../../img/user.png";
 import s from "./Profileinfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
+import ProfileStatus from "./ProfileStatus"
 
 const Profileinfo = (props) => {
   if (!props.userProfile) {
@@ -20,7 +21,8 @@ const Profileinfo = (props) => {
           src={props.userProfile.photos.large || avatar}
           alt="avatar"
         />
-        <div>Обо мне: {props.userProfile.aboutMe}</div>
+        {/* <div>Обо мне: {props.userProfile.aboutMe}</div> */}
+        <ProfileStatus aboutMe={props.userProfile.aboutMe} />
         <br/>
         <div>Место работы:
           {props.userProfile.lookingForAJob
