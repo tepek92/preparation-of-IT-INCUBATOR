@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { setUserProfile } from "../../redux/profileReducer";
 import Profile from "./Profile";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 import WithAuthNavigate from "../../hoc/WithAuthNavigate";
 import { compose } from "redux";
+import withRouter from "../../hoc/WithRouter";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -26,14 +26,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-function withRouter(Component) {
-  function ComponentWithRouterProp(props) {
-    let location = useLocation();
-    let navigate = useNavigate();
-    let params = useParams();
-    return <Component {...props} router={{ location, navigate, params }} />;
-  }
-  return ComponentWithRouterProp;
-}
-
-export default  compose(connect(mapStateToProps, { setUserProfile }), withRouter, WithAuthNavigate)(ProfileContainer)
+export default  compose(connect(mapStateToProps, { setUserProfile }), withRouter , WithAuthNavigate)(ProfileContainer)
