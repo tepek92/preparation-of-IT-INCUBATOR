@@ -12,16 +12,26 @@ class ProfileStatus extends React.Component {
       this.setState({ editMode: false });
       this.props.updateUserStatus(e.target.value);
     } else {
-      this.setState({ editMode: true });
+        this.setState({ editMode: true });
     }
-    this.setState({ userStatus: e.target.value });
+    
   };
+
+  changeStatus = (e) => {
+    this.setState({ userStatus: e.target.value });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.userStatus !== this.props.userStatus) {
+        this.setState({userStatus: this.props.userStatus});
+    }
+  }
 
   render() {
     return (
       <div>
         {this.state.editMode && (
-          <input
+          <input onChange={this.changeStatus}
             autoFocus
             onBlur={this.changeMode}
             value={this.state.userStatus}
