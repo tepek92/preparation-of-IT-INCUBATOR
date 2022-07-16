@@ -21,8 +21,7 @@ const Profileinfo = (props) => {
           src={props.userProfile.photos.large || avatar}
           alt="avatar"
         />
-        {/* <div>Обо мне: {props.userProfile.aboutMe}</div> */}
-        <ProfileStatus aboutMe={props.userProfile.aboutMe} />
+        <ProfileStatus updateUserStatus={props.updateUserStatus} userStatus={props.userStatus} />
         <br/>
         <div>Место работы:
           {props.userProfile.lookingForAJob

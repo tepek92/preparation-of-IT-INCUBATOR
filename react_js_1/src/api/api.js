@@ -19,7 +19,9 @@ export const followAPI = {
 }
 
 export const profileAPI = {
-    getProfile: (id) => instans.get(`profile/${id}`).then((response) => response.data)
+    getProfile: (id) => instans.get(`profile/${id}`).then((response) => response.data),
+    getStatus: (id) => instans.get(`profile/status/${id}`).then((response) => response.data),
+    updateStatus: (status) => instans.put(`profile/status`, {status: status}).then((response) => response.data),
 }
 
 export const authAPI = {
