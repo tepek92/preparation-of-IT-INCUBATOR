@@ -1,7 +1,6 @@
 import Dialogs from "./Dialogs";
 import {
   addNewMessage,
-  updateNewMessageText,
 } from "../../redux/dialogsReducer";
 import { connect } from 'react-redux';
 import WithAuthNavigate from "../../hoc/WithAuthNavigate";
@@ -14,4 +13,4 @@ const mapStateToProps = (state) => {
     });
 }
 
-export default compose(connect(mapStateToProps, {addNewMessage, updateNewMessageText}), WithAuthNavigate)(Dialogs)
+export default compose(connect(mapStateToProps, { addNewMessage }), WithAuthNavigate)(Dialogs)

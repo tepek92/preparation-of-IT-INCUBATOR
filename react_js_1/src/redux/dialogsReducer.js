@@ -1,5 +1,4 @@
 const ADD_NEW_MESSAGE_FIRST_USER = "ADD_NEW_MESSAGE_FIRST_USER";
-const UPDATE_NEW_MESSAGE_TEXT_FIRST_USER = "UPDATE_NEW_MESSAGE_TEXT_FIRST_USER";
 
 let initialState = {
   dialogsData: [
@@ -39,7 +38,6 @@ let initialState = {
       { id: "2", message: "How are you?" },
       { id: "3", message: "Fine!" },
     ],
-    newFirstUserMessage: "",
     secondUser: [
       { id: "1", message: "Hi" },
       { id: "2", message: "Fine! And you?" },
@@ -59,17 +57,8 @@ const dialogsReducer = (state = initialState, action) => {
           ...state.messagesData,
           firstUser: [
             ...state.messagesData.firstUser,
-            { id: newId, message: state.messagesData.newFirstUserMessage },
+            { id: newId, message: action.newMessage },
           ],
-          newFirstUserMessage: "",
-        },
-      };
-    case UPDATE_NEW_MESSAGE_TEXT_FIRST_USER:
-      return {
-        ...state,
-        messagesData: {
-          ...state.messagesData,
-          newFirstUserMessage: action.newMessage,
         },
       };
     default:
@@ -77,11 +66,8 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
-export const addNewMessage = () => ({
+export const addNewMessage = (newMessage) => ({
   type: ADD_NEW_MESSAGE_FIRST_USER,
-});
-export const updateNewMessageText = (newMessage) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT_FIRST_USER,
   newMessage: newMessage,
 });
 
