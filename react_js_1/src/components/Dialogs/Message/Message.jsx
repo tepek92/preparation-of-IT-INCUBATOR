@@ -4,6 +4,8 @@ import s from "./Message.module.css";
 import Firstuser from "./Firstuser/Firstuser";
 import Seconduser from "./Seconduser/Seconduser";
 import { Field, reduxForm } from "redux-form";
+import { FormInputCreator } from "../../common/FormControler/FormControler";
+import { maxLength, require } from "../../../helpers/validators/Validators";
 
 const Message = (props) => {
   let firstUser = props.messagesData.firstUser.map((message) => (
@@ -32,13 +34,12 @@ const Message = (props) => {
 
 const MessageForm = (props) => {
 
+  const maxLength50 = maxLength(50);
   return (
     <form onSubmit={props.handleSubmit}>
-      <Field
-        component={"textarea"}
-        name={"message"}
-        className={s.textarea}
-      />
+      <div className={s.textarea}>
+        <Field validate={[require, maxLength50]} component={FormInputCreator} name="message" Element={"textarea"}/>
+        </div>
       <button >Отправить</button> 
 
     </form>
