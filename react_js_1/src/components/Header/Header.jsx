@@ -3,8 +3,12 @@ import { NavLink } from "react-router-dom";
 import logo from "../../img/logo.png";
 import s from "./Header.module.css";
 import avatar from "../../img/user.png";
+import axios from "axios";
+
+
 
 const Header = (props) => {
+
   return (
     <header className={s.header}>
       <img src={logo} alt="" />
@@ -13,7 +17,9 @@ const Header = (props) => {
           <img className={s.avatar} alt="" src={props.userPhoto || avatar} />
         </span>
         <span>
-          {props.isAuthorized ? props.login : <NavLink to="/login">login</NavLink>}
+          {props.isAuthorized 
+          ? <div> <button onClick={props.logout}>logout</button> {props.login} </div>
+          : <NavLink to="/login"><button>login</button></NavLink>}
         </span>
       </div>
     </header>

@@ -25,5 +25,8 @@ export const profileAPI = {
 }
 
 export const authAPI = {
-    getMe: () => instans.get(`auth/me`).then((response) => response.data.data)
+    getMe: () => instans.get(`auth/me`).then((response) => response.data),
+    login: (email, password, rememberMe) => instans.post('auth/login', {email, password, rememberMe}).then((response => response.data)),
+    logout: () => instans.delete('auth/login').then((response => response.data)),
+
 }

@@ -2,7 +2,6 @@ import React from "react";
 import s from "./FormControler.module.css"
 
 export const FormInputCreator = ({ Element, meta, input, ...props }) => {
-  debugger;
   return (
     <div>
       <div>

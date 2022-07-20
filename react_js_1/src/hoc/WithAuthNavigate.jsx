@@ -19,4 +19,7 @@ const WithAuthNavigate = (Component) => {
   return connect(mapStateToProps)(AuthNavigateComponent);
 };
 
+
+
+
 export default WithAuthNavigate;
