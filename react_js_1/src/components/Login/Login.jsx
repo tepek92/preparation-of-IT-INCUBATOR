@@ -6,11 +6,11 @@ import { maxLength, require } from "../../helpers/validators/Validators";
 import { login, logout } from "../../redux/authReducer";
 import { FormInputCreator } from "../common/FormControler/FormControler";
 import ProfileContainer from "../Profile/ProfileContainer";
+import s from "./Login.module.css"
 
 const LoginForm = (props) => {
 
   const maxLength20 = maxLength(20);
-
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -20,12 +20,13 @@ const LoginForm = (props) => {
         <Field validate={[require, maxLength20]} component={FormInputCreator} Element={"input"} name={"password"} placeholder={"password"} type={"password"}/>
       </div>
       <div>
-        <Field validate={[require, maxLength20]} component={FormInputCreator} Element={"input"} name={"rememberMe"} type={"checkbox"} />
+        <Field component={FormInputCreator} Element={"input"} name={"rememberMe"} type={"checkbox"} />
         remember me
       </div>
       <div>
         <button>login</button>
       </div>
+      {props.error && <div className={s.error}>{props.error}</div>}
     </form>
   );
 };

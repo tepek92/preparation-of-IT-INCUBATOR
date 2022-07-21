@@ -8,8 +8,9 @@ import withRouter from "../../hoc/WithRouter";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    this.props.setUserProfile(this.props.router.params.userId || 24767);
-    this.props.getUserStatus(this.props.router.params.userId || 24767);
+    let userID = this.props.router.params.userId || this.props.authorizedUserId;
+    this.props.setUserProfile(userID);
+    this.props.getUserStatus(userID);
   }
 
   render() {
@@ -23,9 +24,11 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     userProfile: state.profilePage.userProfile,
-    userStatus: state.profilePage.userStatus
+    userStatus: state.profilePage.userStatus,
+    authorizedUserId: state.auth.id,
+    isAuthorized: state.auth.isAuthorized,
+
   };
 };
 
-export default  compose(connect(mapStateToProps, { setUserProfile, getUserStatus, updateUserStatus }), withRouter )(ProfileContainer)
-// убрал на вермя WithAuthNavigate проверку залогиненности
+export default  compose(connect(mapStateToProps, { setUserProfile, getUserStatus, updateUserStatus }), withRouter, WithAuthNavigate )(ProfileContainer);

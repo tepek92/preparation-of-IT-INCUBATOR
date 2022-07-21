@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { authAPI, profileAPI } from "../api/api";
 
 // Экшены, переменные
@@ -50,7 +51,7 @@ export const setUserPhoto = (userPhoto) => ({
 
 export const setAuthStatus = () => {
   return (dispatch) => {
-    authAPI.getMe().then((data) => {
+    return authAPI.getMe().then((data) => {
       if (data.resultCode === 0) {
         let { email, id, login } = data.data;
         dispatch(setUserDataAuth(email, id, login, true, null));
@@ -67,6 +68,9 @@ export const login = (email, password, rememberMe = false) => {
     authAPI.login(email, password, rememberMe).then((data) => {
       if (data.resultCode === 0) {
         dispatch(setAuthStatus());
+      } else {
+        let message = data.messages ? data.messages[0] : "some errror";
+        dispatch(stopSubmit("login", {_error: message}));
       }
     });
   };

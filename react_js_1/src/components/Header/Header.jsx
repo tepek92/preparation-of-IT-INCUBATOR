@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import logo from "../../img/logo.png";
 import s from "./Header.module.css";
 import avatar from "../../img/user.png";
-import axios from "axios";
 
 
 
