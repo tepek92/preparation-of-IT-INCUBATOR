@@ -4,8 +4,8 @@ import { Navigate } from "react-router-dom";
 import { reduxForm, Field } from "redux-form";
 import { maxLength, require } from "../../helpers/validators/Validators";
 import { login, logout } from "../../redux/authReducer";
+import { getIsAuthorized } from "../../redux/authSelector";
 import { FormInputCreator } from "../common/FormControler/FormControler";
-import ProfileContainer from "../Profile/ProfileContainer";
 import s from "./Login.module.css"
 
 const LoginForm = (props) => {
@@ -52,7 +52,7 @@ const Login = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthorized: state.auth.isAuthorized
+  isAuthorized: getIsAuthorized(state)
 });
 
 export default connect(mapStateToProps, {login, logout})(Login);

@@ -1,4 +1,3 @@
-import { authAPI, profileAPI } from "../api/api";
 import { setAuthStatus } from "./authReducer";
 
 // Экшены, переменные

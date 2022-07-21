@@ -60,7 +60,7 @@ export const setUserProfile = (userId) => {
   );
 };
 
-export const getUserStatus = (userId) => {
+export const setUserStatus = (userId) => {
   return((dispatch) => {
     profileAPI.getStatus(userId).then(data => dispatch(setStatus(data)));
     }

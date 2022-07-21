@@ -85,7 +85,7 @@ export const setIsDisabled = (userID, isDisable) => ({
 });
 
 // Thunk Creator
-export const getUsers = (currentPage, usersCountPage) => {
+export const getUsersInfo = (currentPage, usersCountPage) => {
   return (dispatch) => {
     dispatch(setCurrentPage(currentPage));
     dispatch(setIsFetching(true));
