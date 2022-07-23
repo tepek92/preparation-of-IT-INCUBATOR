@@ -22,6 +22,7 @@ class ProfileContainer extends React.Component {
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     userProfile: getUserProfile(state),
