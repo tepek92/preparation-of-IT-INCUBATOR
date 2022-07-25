@@ -16,6 +16,8 @@ const MyPosts = (props) => {
     console.log(formData);
     props.addNewPost(formData.newpost);
   }
+
+    console.log("MYpost rerender");
   
   return (
     <div className={s.myPosts}>
