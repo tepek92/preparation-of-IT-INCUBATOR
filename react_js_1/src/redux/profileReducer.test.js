@@ -16,6 +16,12 @@ it("after adding the post, the length increaseds", () => {
   expect(newState.postDate.length).toBe(5);
 });
 
+it("after deleting the post, the length decreased", () => {
+  let action = deletePost(1);
+  let newState = profileReducer(state, action);
+  expect(newState.postDate.length).toBe(3);
+});
+
 it("added post is correct", () => {
   let action = addNewPost("New post added");
   let newState = profileReducer(state, action);
@@ -23,12 +29,6 @@ it("added post is correct", () => {
   expect(newState.postDate[4].message).toBe("New post added");
 });
 
-it("after deleting the post, the length decreased", () => {
-  let action = deletePost(1);
-  let newState = profileReducer(state, action);
-
-  expect(newState.postDate.length).toBe(3);
-});
 
 it("deleting an incorrect id works correctly", () => {
   let action = deletePost(686);

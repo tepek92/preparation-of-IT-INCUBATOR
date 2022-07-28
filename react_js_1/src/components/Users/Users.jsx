@@ -19,17 +19,17 @@ const Users = (props) => {
 
   return (
     <div>
-      <span onClick={() => props.setNewCurrentPage(1)}>{"<<<"}</span>
+      <button onClick={() => props.setNewCurrentPage(1)}>{"<<<"}</button>
       {slicePage.map((p) => (
-        <span
+        <button
           className={p === props.currentPage && s.active}
           onClick={() => props.setNewCurrentPage(p)}
         >
           {" "}
           {p}{" "}
-        </span>
+        </button>
       ))}
-      <span onClick={() => props.setNewCurrentPage(pagesCount)}>{">>>"}</span>
+      <button onClick={() => props.setNewCurrentPage(pagesCount)}>{">>>"}</button>
       {props.users.map((u) => {
         return (
           <div>
