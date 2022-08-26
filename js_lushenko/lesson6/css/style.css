@@ -1,0 +1,70 @@
+body {
+    margin-top: 100px;
+    text-align: center; 
+}
+
+
+.box {
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+
+.boxYellow {
+    background-color: yellow;
+    border: 0px;
+
+
+}
+.boxGreen {
+    background-color: green;
+    border: 0px;
+
+
+}
+.boxBorder {
+    border: 3px solid red;
+}
+
+.boxClean {
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border: 0px;
+
+}
+
+.content {
+    display: flex;
+    justify-content:space-around;
+}
+
+.block1 {
+    margin: 50px 50px 0 200px;
+
+}
+
+.block2 {
+    margin: 50px 200px 0 50px;
+
+}
+
+.petrol {
+}
+.btn92 {
+}
+.btn95 {
+}
+.btn98 {
+}
+.price {
+    width: 100x;
+    height: 30px;
+    background-color: rgb(177, 175, 171);
+    margin-top: 10px;
+    line-height: 26px;
+    text-align:start;
+}
