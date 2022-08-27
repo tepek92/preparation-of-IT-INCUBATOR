@@ -1,0 +1,52 @@
+.conteiner {
+    padding: 10px;
+    width: 575px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(161, 161, 161);
+}
+.row_block {
+}
+.row_element {
+}
+.column_block {
+    display: flex;
+}
+.column_element {
+}
+
+.key {
+    background-color: white;
+    border: 1px solid black;
+    /* color: white; */
+    border-radius: 5px;
+    min-width: 35px;
+    height: 35px;
+    margin: 1px;
+    padding: 1px;
+}
+
+.long_key {
+    width: 60px; 
+}
+.space {
+    width: 365px;
+}
+.tab {
+    width: 80px;
+    box-shadow: 0px 0px 2px;
+    
+}
+
+.down {
+    background-color: orangered;
+    color: white;
+}
+
+.inpt {
+    width: 550px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 0px 10px 10px 10px;
+}
