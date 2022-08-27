@@ -1,0 +1,37 @@
+.column_block {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.row_block {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.box1, .box2, .box3 {
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+
+progress {
+    margin: 5px;
+    width: 300px;
+    height: 30px;
+}
+/* .box2 {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+.box3 {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+} */
+
