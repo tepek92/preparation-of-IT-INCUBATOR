@@ -157,6 +157,19 @@ function pickIt(arr) {
   return [odd, even];
 }
 // #11: loop statement --break,continue
+function grabDoll(dolls) {
+  var bag = [];
+  for (let i = 0; i < dolls.length; i++) {
+    if (dolls[i] === "Hello Kitty" || dolls[i] === "Barbie doll") {
+      bag.push(dolls[i]);
+    } else {
+      continue;
+    }
+    if (bag.length === 3) break;
+  }
+
+  return bag;
+}
 // #12: loop statement --for..in and for..of
 // #13: Number object and its properties
 // #14: Methods of Number object--toString() and toLocaleString()
