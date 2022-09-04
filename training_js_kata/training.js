@@ -111,6 +111,29 @@ const saleHotdogs = (n) =>
   n < 5 ? n * 100 : n >= 5 && n < 10 ? n * 95 : n * 90;
 
 // #8: Conditional statement--switch
+function howManydays(month) {
+  var days;
+  switch (month) {
+    case 4:
+      days = 30;
+      break;
+    case 6:
+      days = 30;
+      break;
+    case 9:
+      days = 30;
+      break;
+    case 11:
+      days = 30;
+      break;
+    case 2:
+      days = 28;
+      break;
+    default:
+      days = 31;
+  }
+  return days;
+}
 // #9: loop statement --while and do..while
 // #10: loop statement --for
 // #11: loop statement --break,continue
