@@ -171,6 +171,15 @@ function grabDoll(dolls) {
   return bag;
 }
 // #12: loop statement --for..in and for..of
+function giveMeFive(obj) {
+  let res = [];
+  for (key in obj) {
+    if (key.length === 5) res.push(key);
+    if (obj[key].length === 5) res.push(obj[key]);
+  }
+  return res;
+}
+
 // #13: Number object and its properties
 // #14: Methods of Number object--toString() and toLocaleString()
 // #15: Methods of Number object--toFixed(), toExponential() and toPrecision()
