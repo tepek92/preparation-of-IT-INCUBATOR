@@ -76,6 +76,27 @@ function answer3() {
 }
 
 // #4: Basic data types--Array
+function getLength(arr) {
+  //return length of arr
+  return arr.length;
+}
+function getFirst(arr) {
+  //return the first element of arr
+  return arr[0];
+}
+function getLast(arr) {
+  //return the last element of arr
+  return arr[arr.length - 1];
+}
+function pushElement(arr) {
+  var el = 1;
+  arr.push(el);
+  return arr;
+}
+function popElement(arr) {
+  arr.pop();
+  return arr;
+}
 
 // #5: Basic data types--Object
 // #6: Basic data types--Boolean and conditional statements if..else
