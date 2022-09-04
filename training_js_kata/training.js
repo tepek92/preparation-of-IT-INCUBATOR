@@ -99,6 +99,10 @@ function popElement(arr) {
 }
 
 // #5: Basic data types--Object
+function animal(obj) {
+  return `This ${obj.color} ${obj.name} has ${obj.legs} legs.`;
+}
+
 // #6: Basic data types--Boolean and conditional statements if..else
 // #7: if..else and ternary operator
 // #8: Conditional statement--switch
