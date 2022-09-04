@@ -135,7 +135,19 @@ function howManydays(month) {
   return days;
 }
 // #9: loop statement --while and do..while
+function padIt(str, n) {
+  while (n > 0) {
+    if (n % 2 === 0) {
+      str = str + "*";
+    } else {
+      str = "*" + str;
+    }
+    n--;
+  }
+  return str;
+}
 // #10: loop statement --for
+
 // #11: loop statement --break,continue
 // #12: loop statement --for..in and for..of
 // #13: Number object and its properties
