@@ -104,7 +104,12 @@ function animal(obj) {
 }
 
 // #6: Basic data types--Boolean and conditional statements if..else
+const trueOrFalse = (val) => (val ? "true" : "false");
+
 // #7: if..else and ternary operator
+const saleHotdogs = (n) =>
+  n < 5 ? n * 100 : n >= 5 && n < 10 ? n * 95 : n * 90;
+
 // #8: Conditional statement--switch
 // #9: loop statement --while and do..while
 // #10: loop statement --for
